@@ -1,0 +1,174 @@
+<div class="container-fluid my-5">
+    <div class="row">
+        <div class="col-sm-12 text-center text-secondary">
+            <h3>{{ param.title }}</h3>
+        </div>
+    </div>
+
+    <div class="row mt-3">
+        <div class="form-group container-fluid">
+
+            <div class="row" *ngIf="isEtablissemant || isFormation || isMatiere || isEvaluation || isEtudiant">
+                <div class="col-sm-6 offset-sm-3 form-group">
+                    <label for="nom">Nom</label>
+                    <input class="form-control text-center" id="nom" placeholder="Nom" [(ngModel)]="entity.nom" maxlength="50">
+                </div>
+            </div>
+
+            <div class="row" *ngIf="isFormation || isMatiere || isEvaluation">
+                <div class="col-sm-6 offset-sm-3 form-group">
+                    <label for="commentaire">Commentaire</label>
+                    <input class="form-control text-center" id="commentaire" placeholder="Commentaire" [(ngModel)]="entity.commentaire" maxlength="200">
+                </div>
+            </div>
+
+            <div *ngIf="isEtablissemant" id="etablissement">
+                <div class="row">
+                    <div class="col-sm-6 offset-sm-3 form-group">
+                        <label for="adresse">Adresse</label>
+                        <input class="form-control text-center" id="adresse" placeholder="Adresse" [(ngModel)]="entity.adresse" maxlength="200">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-6 offset-sm-3 form-group">
+                        <app-select [isMultiple]="true" type="Formation" [ids]="entity.formations" (selIds)="entity.formations = $event"></app-select>
+                    </div>
+                </div>
+            </div>
+
+            <div *ngIf="isFormation" id="formation">
+                <div class="row">
+                    <div class="col-sm-6 offset-sm-3 form-group">
+                        <label for="anneescolaire">Année Scolaire</label>
+                        <input class="form-control text-center" id="anneescolaire" placeholder="XX01-XX02" [(ngModel)]="entity.anneeScolaire" maxlength="9" pattern="^(\d{4})-(\d{4})$">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-6 offset-sm-3 form-group">
+                        <app-select [isMultiple]="true" type="Matiere" [ids]="entity.matieres" (selIds)="entity.matieres = $event"></app-select>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-6 offset-sm-3 form-group">
+                        <app-select [isMultiple]="true" type="Etudiant" [ids]="entity.etudiants" (selIds)="entity.etudiants = $event"></app-select>
+                    </div>
+                </div>
+            </div>
+
+            <div *ngIf="isMatiere" id="matiere">
+                <div class="row">
+                    <div class="col-sm-6 offset-sm-3 form-group">
+                        <label for="anneescolaire">Nom de l'enseignant</label>
+                        <input class="form-control text-center" placeholder="Nom de l'enseignant" [(ngModel)]="entity.nomEnseignant" maxlength="50">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-6 offset-sm-3 form-group">
+                        <app-select [isMultiple]="true" type="Evaluation" [ids]="entity.evaluations" (selIds)="entity.evaluations = $event"></app-select>
+                    </div>
+                </div>
+            </div>
+
+            <div *ngIf="isEvaluation" id="evaluation">
+                <div class="row">
+                    <div class="col-sm-6 offset-sm-3 form-group">
+                        <label for="type">Type</label>
+                        <input class="form-control text-center" id="type" placeholder="Type" [(ngModel)]="entity.type" maxlength="8">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-3 offset-sm-3 form-group">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Début</span>
+                            </div>
+                            <input type="date" class="form-control text-center" [(ngModel)]="entity.debut">
+                        </div>
+                    </div>
+                    <div class="col-sm-3 form-group">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Fin</span>
+                            </div>
+                            <input type="date" class="form-control text-center" [(ngModel)]="entity.fin">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div *ngIf="isNote" id="note">
+                <div class="row">
+                    <div class="col-sm-6 offset-sm-3 form-group">
+                        <label for="resultat" class="d-block">Résultat</label>
+                        <div>
+                            <input type="number" class="form-control text-center d-inline" id="resultat" [(ngModel)]="entity.resultat" min="0" max="20">
+                            <span id="resultatContent"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-6 offset-sm-3 form-group">
+                        <app-select [isMultiple]="false" type="Evaluation" [ids]="entity.evaluation" (selIds)="entity.evaluation = $event"></app-select>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-6 offset-sm-3 form-group">
+                        <app-select [isMultiple]="false" type="Etudiant" [ids]="entity.etudiant" (selIds)="entity.etudiant = $event"></app-select>
+                    </div>
+                </div>
+            </div>
+
+            <div *ngIf="isEtudiant" id="etudiant">
+                <div class="row">
+                    <div class="col-sm-6 offset-sm-3 form-group">
+                        <label for="prenom">Prénom</label>
+                        <input class="form-control text-center" id="prenom" placeholder="Prénom" [(ngModel)]="entity.prenom" maxlength="50">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6 offset-sm-3 form-group">
+                        <label for="dateNaiss">Date de naissance</label>
+                        <input type="date" id="dateNaiss" class="form-control text-center" [(ngModel)]="entity.naissance">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6 offset-sm-3 form-group">
+                        <label for="tel">Numéro de Téléphone</label>
+                        <input class="form-control text-center" id="tel" placeholder="Numéro de Téléphone" [(ngModel)]="entity.tel" maxlength="20" pattern="^(((\+\d{2})\s?\d)|(0\d))((\s|( ?- ?)|( ?. ?))?\d{2}){4}$">
+                    </div>
+                </div>
+            </div>
+
+            <div *ngIf="isCompte || isEtudiant" id="compte">
+                <div class="row">
+                    <div class="col-sm-6 offset-sm-3 form-group">
+                        <label for="mail">Adresse e-mail</label>
+                        <input type="email" class="form-control text-center" id="mail" placeholder="Adresse e-mail" [(ngModel)]="compte.mail">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6 offset-sm-3 form-group">
+                        <label for="mdp">Mot de passe</label>
+                        <input type="password" class="form-control text-center" id="mdp" placeholder="Mot de passe" [(ngModel)]="compte.mdp" minlength="8" maxlength="28">
+                        <small class="form-text text-muted">Le mot de passe doit être compris entre 8 et 28 charactères.</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-4 offset-sm-2 text-center">
+            <button class="btn btn-success btn-rounded py-2 px-5" (click)="onValider()">{{ param.success }}</button>
+        </div>
+        <div class="col-sm-4 text-center mt-sm-0 mt-3">
+            <button class="btn btn-danger btn-rounded py-2 px-5" (click)="onAnnuler()">{{ param.cancel }}</button>
+        </div>
+    </div>
+</div>

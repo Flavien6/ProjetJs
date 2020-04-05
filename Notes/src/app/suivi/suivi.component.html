@@ -1,0 +1,70 @@
+<div class="container-fluid justify-content-center">
+    <div class="row">
+        <div class="col-12">
+            <h2>{{ formation.nom }}</h2>
+        </div>
+    </div>
+    <div class="row mt-5">
+        <div class="list-group col-sm-5">
+            <!--<a href="#" class="list-group-item list-group-item-action active"></a>-->
+            <a *ngFor="let matiere of matieres" class="list-group-item list-group-item-action" (click)="onClickMatiere($event)">
+                <input type="hidden" [value]="matiere.evaluations" /> {{ matiere.affD }}
+            </a>
+        </div>
+
+        <div class="list-group col-sm-5 offset-sm-2 invisible mt-4">
+            <!--<a href="#" class="list-group-item list-group-item-action active"></a>-->
+            <a *ngFor="let note of notes" class="list-group-item list-group-item-action" (click)="onClickNote($event)">
+                <input type="hidden" [value]="note.id" /> {{ note.affD }}
+            </a>
+        </div>
+    </div>
+
+    <div class="row mt-5">
+        <div class="col-12">
+            <button class="btn btn-success btn-rounded p-3" (click)="onClickGlobal()">Suivi Global</button>
+        </div>
+    </div>
+</div>
+
+<swal #noteSwal [swalOptions]="{ showConfirmButton: false, showCloseButton: true }">
+    <div *swalPortal class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <h3>{{ noteAff.nomEval }}</h3>
+            </div>
+            <div class="col-12">
+                <h4>{{ noteAff.resultat }}/20</h4>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <p>Note maximal : {{ noteAff.max }}/20</p>
+            </div>
+            <div class="col-12">
+                <p>Note minimal : {{ noteAff.min }}/20</p>
+            </div>
+            <div class="col-12">
+                <p>Moyenne : {{ noteAff.moy }}/20</p>
+            </div>
+            <div class="col-12">
+                <p>Mediane : {{ noteAff.med }}/20</p>
+            </div>
+        </div>
+    </div>
+</swal>
+
+<swal #globalSwal [swalOptions]="{ showConfirmButton: false, showCloseButton: true }">
+    <div *swalPortal class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <canvas baseChart [datasets]="radarChartData"
+                [labels]="radarChartLabels"
+                [chartType]="radarChartType"
+                [colors]="[{ borderColor: '#2c3e50', backgroundColor: 'rgba(44, 62, 80, 0.3)'},
+                            { borderColor: '#18bc9c', backgroundColor: 'rgba(24, 188, 156, 0.3)'}]"
+                [options]="{responsive: true}"></canvas>
+            </div>
+        </div>
+    </div>
+</swal>

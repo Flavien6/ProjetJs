@@ -1,0 +1,115 @@
+/* Global */
+
+* {
+    font-size: 1.05rem;
+    font-family: "Charlie Text", sans-serif;
+}
+
+body {
+    background-color: #f9faf7;
+    overflow-x: hidden;
+}
+
+.content {
+    width: 90%;
+    margin: auto;
+}
+
+.link-app img {
+    opacity: 0.8;
+}
+
+.link-app img:hover {
+    opacity: 1;
+}
+
+.small h1 {
+    font-size: 2rem !important;
+}
+
+.small p {
+    font-size: 1rem !important;
+}
+
+
+/* Gradient */
+
+.grad-top {
+    background-image: linear-gradient(to right bottom, #007bff, #4400ff);
+}
+
+.grad-partner {
+    background-image: linear-gradient(#695399, #765399);
+    border-radius: 20px;
+    width: 85%;
+}
+
+.grad-foot {
+    background-image: linear-gradient(#f9faf7, #d191e3, #84bee8, #f9faf7, #f9faf7);
+}
+
+
+/* NavBar */
+
+nav {
+    background-color: rgba(0, 123, 255, 0);
+}
+
+.nav-connexion {
+    border: 0;
+    color: #f8fae1;
+}
+
+.nav-connexion:hover {
+    color: #007bff;
+    border: 0;
+}
+
+.nav-inscription {
+    color: #007bff;
+    border: 0;
+}
+
+.nav-inscription:hover {
+    color: #f8fae1;
+    background-color: rgba(0, 0, 0, 0);
+    border: 0;
+    text-decoration: underline;
+}
+
+
+/* Footer */
+
+.list-footer a {
+    margin-right: 2%;
+    text-decoration: underline;
+    color: #8c8b7d;
+}
+
+.list-footer a:hover {
+    text-decoration: none;
+    color: #5c5b53;
+}
+
+#langage {
+    border-radius: 7px;
+    width: 20%;
+    height: 150%;
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: #3d3d3d;
+    opacity: 0.7;
+}
+
+#langage option {
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: #919191;
+}
+
+.footer-img {
+    background-image: url('../img/fond-bot.png');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}

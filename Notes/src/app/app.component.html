@@ -1,0 +1,30 @@
+<!-- NavBar -->
+<nav class="navbar navbar-expand navbar-dark bg-primary flex-column flex-md-row bd-navbar">
+    <a class="navbar-brand ml-3 mr-0 mr-md-2" routerLink="">Notes</a>
+
+    <ul class="navbar-nav flex-row ml-md-auto d-md-flex">
+        <li class="nav-item dropdown" *ngIf="this.compte !== 0">
+            <a class="nav-link dropdown-toggle mr-3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <svg class="bi bi-people-circle mr-1" width="2em" height="2em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M13.468 12.37C12.758 11.226 11.195 10 8 10s-4.757 1.225-5.468 2.37A6.987 6.987 0 008 15a6.987 6.987 0 005.468-2.63z"/>
+                    <path fill-rule="evenodd" d="M8 9a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd"/>
+                    <path fill-rule="evenodd" d="M8 1a7 7 0 100 14A7 7 0 008 1zM0 8a8 8 0 1116 0A8 8 0 010 8z" clip-rule="evenodd"/>
+                </svg> {{ dispCompte }}
+            </a>
+
+            <div class="dropdown-menu dropdown-menu-right dropdown-info" aria-labelledby="navbarDropdownMenuLink-4">
+                <a class="dropdown-item" [routerLink]="[ '/form', 'Compte', compte ]">Compte</a>
+                <a class="dropdown-item" routerLink="/connexion" (click)="onDeconnexion()">Déconnexion</a>
+            </div>
+        </li>
+    </ul>
+</nav>
+
+<router-outlet></router-outlet>
+
+<!-- Footer -->
+<footer class="footer p-3 mt-5">
+    <div class="container text-center d-sm-block d-none"><span class="text-muted text-center"><kbd>alt + t</kbd> Pour <span id="footerTest">lancer</span> le mode test. Attention, perte de toutes les données existantes !</span>
+    </div>
+    <div class="container text-center mt-2"><span class="text-muted text-center">© 2020 Copyright: Alessandrin Flavien</span></div>
+</footer>

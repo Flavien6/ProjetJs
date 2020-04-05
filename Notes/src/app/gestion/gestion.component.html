@@ -1,0 +1,45 @@
+<div class="container-fluid text-center">
+    <div class="row">
+        <div class="col-12 text-center text-secondary py-5">
+            <h1>Gestionnaire de Notes</h1>
+        </div>
+    </div>
+
+    <div class="row" *ngIf="typeCompte === 'etudiant'">
+        <div class="col-12">
+            <app-suivi></app-suivi>
+        </div>
+    </div>
+
+    <div class="row" *ngIf="typeCompte === 'admin'">
+        <div class="col-md-3 offset-md-3 mt-3 text-center">
+            <button class="btn btn-secondary btn-rounded btn-form" (click)="onClick('Administrateurs','Compte',{admin: true})">Administrateurs</button>
+        </div>
+        <div class="col-md-3 mt-3 text-center">
+            <button class="btn btn-secondary btn-rounded btn-form" (click)="onClick('Etudiants','Etudiant',{})">Etudiants</button>
+        </div>
+
+        <div class="col-md-4 text-center mt-3 mt-md-5">
+            <button class="btn btn-secondary btn-rounded btn-form" (click)="onClick('Etablissements','Etablissement',{})">Etablissements</button>
+        </div>
+        <div class="col-md-4 text-center mt-3 mt-md-5">
+            <button class="btn btn-secondary btn-rounded btn-form" (click)="onClick('Formations','Formation',{})">Formations</button>
+        </div>
+        <div class="col-md-4 text-center mt-3 mt-md-5">
+            <button class="btn btn-secondary btn-rounded btn-form" (click)="onClick('Matières','Matiere',{})">Matières</button>
+        </div>
+
+        <div class="col-md-3 offset-md-3 text-center mt-3 mt-md-5">
+            <button class="btn btn-secondary btn-rounded btn-form" (click)="onClick('Evaluations','Evaluation',{})">Evaluations</button>
+        </div>
+        <div class="col-md-3 text-center mt-3 mt-md-5">
+            <button class="btn btn-secondary btn-rounded btn-form" (click)="onClick('Notes','Note',{})">Notes</button>
+        </div>
+    </div>
+</div>
+
+<swal #listeSwal [swalOptions]="{ showConfirmButton: false, showCloseButton: true }">
+    <div *swalPortal class="container-fluid">
+        <app-liste [title]="title" [type]="type" [entities]="entities"></app-liste>
+    </div>
+</swal>

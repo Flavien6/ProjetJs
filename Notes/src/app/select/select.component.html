@@ -1,0 +1,6 @@
+<label [for]="type">{{ label }}</label>
+<select [id]="type" [multiple]="isMultiple" class="form-control" (change)="this.selIds.emit(this.ids)" [(ngModel)]="ids">
+    <option class="text-center" *ngFor="let entity of entities" [value]="entity.id">
+        {{ entity.affD }}
+    </option>
+</select>

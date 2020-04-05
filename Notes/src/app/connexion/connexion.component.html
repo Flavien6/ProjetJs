@@ -1,0 +1,25 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12 text-center text-secondary p-5">
+            <h1>Connexion</h1>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-4 offset-sm-4 form-group">
+            <input type="email" class="form-control text-center" id="mail" aria-describedby="emailHelp" placeholder="Entrez une adresse e-mail" [(ngModel)]="mail">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-4 offset-sm-4 form-group">
+            <input type="password" class="form-control text-center" id="mdp" placeholder="Mot de passe" [(ngModel)]="mdp">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12 text-center my-2">
+            <button type="submit" class="btn btn-info btn-rounded p-3" autofocus (click)="onConnexion()">Connexion</button>
+        </div>
+    </div>
+</div>
